@@ -1,5 +1,9 @@
-function list() {
-    let starSystems = { "Sun": {}, "Alpha Centauri": {}, "Bernard's Star": {} }
+let list = () => {
+    let starSystems = [
+        { "System": "Solar-System" },
+        { "System": "Alpha-Centauri" },
+        { "System": "Bernard's-Star" }
+    ]
     return starSystems
 }
 
