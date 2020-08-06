@@ -1,0 +1,14 @@
+{
+  "name": "solar-systems",
+  "version": "1.0.0",
+  "description": "all star systems with planets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laud B <laud.bentil@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
