@@ -1,10 +1,21 @@
+const appData = require('../package.json');
 const service = require('./service');
 
-let controllers = {
-    home: (req, res) => {
-        let systems = service.Systems;
-        res.json(systems);
-    }
-}
+let controller = {
 
-module.exports = controllers;
+    home: (req, res) => {
+        let description = {
+            name: appData.name,
+            description: appData.description,
+            version: appData.version
+        }
+        res.json(description);
+    },
+
+    getSystems: (req, res) => {
+        res.json(service.list);
+    }
+
+};
+
+module.exports = controller;

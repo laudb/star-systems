@@ -1,7 +1,8 @@
-const Systems = [
-    "Sun",
-    "Alpha Centauri",
-    "Bernard's Star"
-];
+function list() {
+    let starSystems = { "Sun": {}, "Alpha Centauri": {}, "Bernard's Star": {} }
+    return starSystems
+}
 
-modules.exports = Systems;
+module.exports = {
+    list: list()
+};
