@@ -9,6 +9,7 @@ const apiRoutes = require('./api/routes');
 const appRoutes = require('./app/routes')
 
 app.use(logger('dev'));
+
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "pug")
 
