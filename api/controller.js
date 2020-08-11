@@ -15,7 +15,6 @@ let controller = {
     getSystems: (req, res) => {
         res.json(service.list);
     }
-
 };
 
 module.exports = controller;
