@@ -2,6 +2,7 @@
 var express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan');
 
@@ -15,18 +16,16 @@ app.set('view engine', 'pug');
 // loaders
 app.use(logger('dev'));
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.post('/system', (req, res) => {
-    console.log({ 'system': req.body.name })
-    res.send('Added A New System');
-});
-
-app.get('/system', (req, res) => {
-    res.render('add', { title: 'Add' });
+    const name = req.body['system-name']
+    res.send({ 'Added A New System': name });
 });
 
 app.get('/system/:name', (req, res) => {
