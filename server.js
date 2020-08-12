@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 // data store
 let systems = [];
@@ -40,7 +40,7 @@ app.post('/system', (req, res) => {
 });
 
 app.get('/system/:name', (req, res) => {
-    res.render(`details`, { title: 'Details' });
+    res.render('details', { data: 'Planetary Systems', title: 'Details' });
 });
 
 app.get('/', (req, res) => {

@@ -1,0 +1,9 @@
+.list-items {
+ float: right;
+}
+
+.list-item {
+ list-style-type: none;
+ display: inline;
+ padding-right: 10px;
+}
