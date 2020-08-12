@@ -1,4 +1,6 @@
 mixin system-form
     form(action="/system", method="post" )
         input#system-name(type="name", name="system-name")
+        if err
+            p Error: #{err}
         button(type="submit") Submit

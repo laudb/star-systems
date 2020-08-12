@@ -20,16 +20,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // data store
 let systems = [];
 
 // routes
 app.post('/system', (req, res) => {
-    const name = req.body['system-name'];
-    systems.push(name);
-    res.redirect('/');
+    let name = req.body['system-name'];
+    if (systems.includes(name)) {
+        name = ''
+        let error = 'Planetary System already exists.'
+        res.render('list', { data: 'Planetary Systems', title: 'Home', systems: systems, err: error })
+    }
+    if (name.length > 2) {
+        systems.push(name);
+        res.redirect('/');
+    }
 });
 
 app.get('/system/:name', (req, res) => {
@@ -37,7 +44,7 @@ app.get('/system/:name', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('list', { data: 'Stellar Systems', title: 'Home', systems: systems });
+    res.render('list', { data: 'Planetary Systems', title: 'Home', systems: systems });
 });
 
 // server
