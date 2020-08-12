@@ -4,6 +4,7 @@
   "description": "all star systems with planets",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +17,8 @@
     "morgan": "^1.10.0",
     "pug": "^3.0.0",
     "server": "^1.0.30"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

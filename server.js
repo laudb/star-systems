@@ -1,20 +1,31 @@
 // app
 var express = require('express');
 const app = express();
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const logger = require('morgan');
 
 // server 
 const PORT = process.env.PORT || 3000;
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 // loaders
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-
 app.post('/system', (req, res) => {
     res.send('Add A New System')
 });
 
 app.get('/system/:name', (req, res) => {
-    res.send('This is a system and its details')
+    res.send(`This is a system and its details`)
 });
 
 app.get('/', (req, res) => {
