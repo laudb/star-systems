@@ -39,6 +39,11 @@ app.post('/system', (req, res) => {
     }
 });
 
+// numbed out /add route for now with modal active
+// app.get('/add', (req, res) => {
+//     res.render('add', { data: 'Planetary Systems', title: 'Add' })
+// });
+
 app.get('/system/:name', (req, res) => {
     res.render('details', { data: 'Planetary Systems', title: 'Details' });
 });
