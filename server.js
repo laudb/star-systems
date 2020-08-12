@@ -21,6 +21,7 @@ app.use(cookieParser());
 
 // routes
 app.post('/system', (req, res) => {
+    console.log({ 'system': req.body.name })
     res.send('Added A New System');
 });
 
