@@ -2,4 +2,9 @@ extend layout
 
 block content
     p This is the list
+    ul
+        each one in systems
+            console.log(one)
+            li= one 
+
     +system-form()(class='modal')

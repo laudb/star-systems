@@ -22,10 +22,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
+// data store
+let systems = [];
+
 // routes
 app.post('/system', (req, res) => {
-    const name = req.body['system-name']
-    res.send({ 'Added A New System': name });
+    const name = req.body['system-name'];
+    systems.push(name);
+    res.redirect('/');
 });
 
 app.get('/system/:name', (req, res) => {
@@ -33,7 +37,7 @@ app.get('/system/:name', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.render('list', { data: 'Stellar Systems', title: 'Home' });
+    res.render('list', { data: 'Stellar Systems', title: 'Home', systems: systems });
 });
 
 // server
