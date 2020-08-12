@@ -17,19 +17,23 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.post('/system', (req, res) => {
-    res.send('Add A New System')
+    res.send('Added A New System');
+});
+
+app.get('/system', (req, res) => {
+    res.render('add', { title: 'Add' });
 });
 
 app.get('/system/:name', (req, res) => {
-    res.send(`This is a system and its details`)
+    res.render(`details`, { title: 'Details' });
 });
 
 app.get('/', (req, res) => {
-    res.send('Solar Systems Home Page')
+    res.render('list', { data: 'Stellar Systems', title: 'Home' });
 });
 
 // server
