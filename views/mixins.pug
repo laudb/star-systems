@@ -1,6 +1,9 @@
 mixin system-form
-    form(action="/system", method="post" )
-        input#system-name(type="name", name="system-name")
-        if err
-            p Error: #{err}
-        button(type="submit") Submit
+    div(class="modal" id="addModal")
+        form(action="/system", method="post" class="modal-content")
+            span(class="close")
+                X
+            input#system-name(type="name", name="system-name")
+            if err
+                p Error: #{err}
+            button(type="submit") Submit
