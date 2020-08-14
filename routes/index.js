@@ -3,9 +3,6 @@ const router = express.Router();
 
 const api = require('../controllers');
 
-// data store
-let systems = [];
-
 /**
  * @swagger
  * definitions:
@@ -31,18 +28,7 @@ let systems = [];
  *           $ref: '#/definitions/System'
  *
 */
-app.post('/system', (req, res) => {
-    let name = req.body['system-name'];
-    if (systems.includes(name)) {
-        name = ''
-        let error = 'Planetary System already exists.'
-        res.render('list', { data: 'Planetary Systems', title: 'Home', systems: systems, err: error })
-    }
-    if (name.length > 2) {
-        systems.push(name);
-        res.redirect('/');
-    }
-});
+router.post('/system', api.addSystem);
 
 
 /**
@@ -68,9 +54,7 @@ app.post('/system', (req, res) => {
  *           $ref: '#/definitions/System'
  * 
 */
-app.get('/system/:name', (req, res) => {
-    res.render('details', { data: 'Planetary Systems', title: 'Details' });
-});
+router.get('/system/:name', api.getSystem);
 
 
 /**
@@ -94,12 +78,11 @@ app.get('/system/:name', (req, res) => {
  *           $ref: '#/definitions/Systems'
  * 
 */
-app.get('/', (req, res) => {
-    res.render('list', { data: 'Planetary Systems', title: 'Home', systems: systems });
-});
+router.get('/', api.listSystems);
+
 
 // numbed out /add route for now with modal active
-// app.get('/add', (req, res) => {
+// router.get('/add', (req, res) => {
 //     res.render('add', { data: 'Planetary Systems', title: 'Add' })
 // });
 
