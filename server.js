@@ -1,6 +1,29 @@
 // app
 var express = require('express');
+const swaggerJSDoc = require('swagger-jsdoc');
 const app = express();
+const swaggerDefinition = {
+    info: {
+        title: "Swagger API",
+        version: "1.0.0",
+        description: "RESTful API"
+    },
+    host: "localhost: 3000",
+    basePath: "/",
+    swagger: "2.0",
+    paths: {},
+    definitions: {},
+    responses: {},
+    parameters: {},
+    securityDefinitions: {}
+};
+
+const options = {
+    swaggerDefinition: swaggerDefinition,
+    apis: ['./routes/*.js'],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -26,6 +49,7 @@ app.use(cookieParser());
 let systems = [];
 
 // routes
+// --app
 app.post('/system', (req, res) => {
     let name = req.body['system-name'];
     if (systems.includes(name)) {
@@ -50,6 +74,12 @@ app.get('/system/:name', (req, res) => {
 
 app.get('/', (req, res) => {
     res.render('list', { data: 'Planetary Systems', title: 'Home', systems: systems });
+});
+
+// --swagger 
+app.get('/swagger.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
 });
 
 // server
