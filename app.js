@@ -3,14 +3,11 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
-const loaders = require('./loaders');
-const swaggerApp = require('./swagger-app');
 
 const app = express();
 
-loaders(app);
-
-swaggerApp(app, express);
+require('./loaders')(app);
+require('./swagger-app')(app, express);
 
 app.use(express.json());
 
