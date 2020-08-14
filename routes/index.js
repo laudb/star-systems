@@ -80,7 +80,6 @@ router.get('/system/:name', api.getSystem);
 */
 router.get('/', api.listSystems);
 
-
 // numbed out /add route for now with modal active
 // router.get('/add', (req, res) => {
 //     res.render('add', { data: 'Planetary Systems', title: 'Add' })
