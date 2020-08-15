@@ -1,17 +1,19 @@
 // data store
-let systems = [];
+let systems = ['Sun', 'Proxima Centauri'];
+let appName = 'Star Systems'
 
 function addSystem(req, res, next) {
 
     let name = req.body['system-name'];
 
+    // data store save
     if (systems.includes(name)) {
         name = ''
-        let error = 'Planetary System already exists.'
+        let error = 'Star System already exists.'
         res.render(
             'list',
             {
-                data: 'Planetary Systems',
+                data: appName,
                 title: 'Home',
                 systems: systems,
                 err: error
@@ -24,10 +26,11 @@ function addSystem(req, res, next) {
 };
 
 function listSystems(req, res, next) {
+    // data store fetch all
     res.render(
         'list',
         {
-            data: 'Planetary Systems',
+            data: appName,
             title: 'Home',
             systems: systems
         }
@@ -35,11 +38,16 @@ function listSystems(req, res, next) {
 };
 
 function getSystem(req, res, next) {
+
+    let system = req.params.name;
+
+    // data store fetch one
     res.render(
         'details',
         {
-            data: 'Planetary Systems',
-            title: 'Details'
+            data: appName,
+            title: 'Details',
+            system: system
         }
     );
 };
