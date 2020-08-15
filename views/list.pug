@@ -1,10 +1,16 @@
 extend layout
 
-block content
-    p This is the list
-    ul
-        each one in systems
-            console.log(one)
-            li= one 
+block content 
+    section(class='hero is-medium')
+      div(class='hero-body')
+        div(class='container')
+            h1(class='title') Star List
+            ul
+                each one in systems
+                    li(class='subtitle')= one 
 
-    +system-form()(class='modal')
+    section(class='hero is-small')
+        div(class='hero-body')
+        div(class='container')
+
+        +system-form()(class='modal')

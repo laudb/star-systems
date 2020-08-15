@@ -1,8 +1,16 @@
 extend layout
 
 block content
-    p This is the details
-    ul
-      li= system
+  section(class='hero is-medium')
+    div(class='hero-body')
+      div(class='container')
+          h1(class='title') Details
+          ul
+              li= system
+  section(class='hero is-small')
+    div(class='hero-body')
+      div(class='container')
+      +system-form()(class='modal')
 
-    +system-form()(class='modal')
+
+      
