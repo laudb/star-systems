@@ -59,7 +59,7 @@ function showPage(req, res, next) {
         {
             data: appName,
             title: 'About',
-            content: 'Listing of nearby star systems, leveraging the NSC catalogue.'
+            content: 'A listing of nearby star systems leveraging the Nearby Stars Catalogue.'
         }
     )
 }
