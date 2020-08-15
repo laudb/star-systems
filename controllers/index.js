@@ -52,5 +52,17 @@ function getSystem(req, res, next) {
     );
 };
 
+function showPage(req, res, next) {
+    // populate about page with data
+    res.render(
+        'about',
+        {
+            data: appName,
+            title: 'About',
+            content: 'Listing of nearby star systems, leveraging the NSC catalogue.'
+        }
+    )
+}
 
-module.exports = { listSystems, getSystem, addSystem }
+
+module.exports = { listSystems, getSystem, addSystem, showPage }

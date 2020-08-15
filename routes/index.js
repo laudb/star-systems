@@ -80,6 +80,27 @@ router.get('/system/:name', api.getSystem);
 */
 router.get('/', api.listSystems);
 
+/**
+ * @swagger
+ * definitions:
+ *   Systems:
+ *     properties:
+ *       name:
+ *         type: string
+ * /about:
+ *   get:
+ *     tags:
+ *       - Systems
+ *     description: Returns about page data.
+ *     produces: 
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: Shows about text
+ * 
+*/
+router.get('/about', api.showPage);
+
 // numbed out /add route for now with modal active
 // router.get('/add', (req, res) => {
 //     res.render('add', { data: 'Planetary Systems', title: 'Add' })
