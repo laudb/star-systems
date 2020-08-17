@@ -1,7 +1,7 @@
 {
-  "name": "planetary-systems",
+  "name": "star-systems",
   "version": "1.0.0",
-  "description": "all star systems with planets",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
