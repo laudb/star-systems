@@ -1,5 +1,5 @@
 ## Solar Systems
 
-A node.js application for loading and showing details of stars and their details.
+A node.js application for loading and showing details of a given set of stars.
 
 w.i.p.
