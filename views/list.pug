@@ -5,9 +5,28 @@ block content
       div(class='hero-body')
         div(class='container')
             h1(class='title') Star List
-            ul
-                each one in systems
-                    li(class='subtitle')= one 
+            table(class='table')
+              thead(class='thead') 
+                tr
+                  th ID
+                  th Name
+                  th Proper Name
+                  th Type
+                  th Distance(ly)
+                  th Mass(SU)
+                  th R (SU)
+                  th T #[sub eff] (K)
+              tbody(class='tbody')
+                each properName, index in systems
+                  tr
+                    td= index+1
+                    td
+                    td= properName
+                    td
+                    td
+                    td
+                    td
+                    td
 
     section(class='hero is-small')
         div(class='hero-body')
