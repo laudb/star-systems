@@ -2,9 +2,18 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const db = require('../models/db');
 
 // loaders
 module.exports = function (app, express) {
+
+    db.on('error', (error) => {
+        console.log('Database Connection Error', error);
+    });
+
+    db.once('open', () => {
+        console.log('Successfully Connected to the Database');
+    });
 
     // view engine setup
     app.set('views', path.join(__dirname, '../views'));
