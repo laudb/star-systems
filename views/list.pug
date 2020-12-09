@@ -16,17 +16,12 @@ block content
                   th Mass(SU)
                   th R (SU)
                   th T #[sub eff] (K)
+                  th Planets
               tbody(class='tbody')
-                each properName, index in systems
+                each val in systems
                   tr
-                    td= index+1
-                    td
-                    td= properName
-                    td
-                    td
-                    td
-                    td
-                    td
+                    each item in val
+                      td= item
 
     section(class='hero is-small')
         div(class='hero-body')
