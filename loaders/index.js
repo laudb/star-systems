@@ -7,14 +7,6 @@ const db = require('../models/db');
 // loaders
 module.exports = function (app, express) {
 
-    db.on('error', (error) => {
-        console.log('Database Connection Error', error);
-    });
-
-    db.once('open', () => {
-        console.log('Successfully Connected to the Database');
-    });
-
     // view engine setup
     app.set('views', path.join(__dirname, '../views'));
     app.set('view engine', 'pug');
@@ -33,6 +25,8 @@ module.exports = function (app, express) {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(cookieParser());
+
+    return app;
 
 }
 
