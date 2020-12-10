@@ -1,32 +1,78 @@
-// data store
-let systems = ['Sun', 'Proxima Centauri'];
 let appName = 'Star Systems'
 
-function addSystem(req, res, next) {
+const dataService = require('../services/dataService');
 
-    let name = req.body['system-name'];
+// change to search system
+async function addSystem(req, res, next) {
+
+    let data = {
+        id: 0,
+        name: 'Sol',
+        properName: 'Sun',
+        type: 'G2V',
+        distance: 0.00,
+        mass: 1.000,
+        radius: '1.00',
+        teff: 5778,
+    }
+
+    let result = await dataService.createData(data);
+    console.log({ '--result--': result });
+
+    // let name = req.body['system-name'];
 
     // data store save
-    if (systems.includes(name)) {
-        name = ''
-        let error = 'Star System already exists.'
-        res.render(
-            'list',
-            {
-                data: appName,
-                title: 'Home',
-                systems: systems,
-                err: error
-            })
-    }
-    if (name.length > 2) {
-        systems.push(name);
-        res.redirect('/');
-    }
+    // if (systems.includes(name)) {
+    //     name = ''
+    //     let error = 'Star System already exists.'
+    //     res.render(
+    //         'list',
+    //         {
+    //             data: appName,
+    //             title: 'Home',
+    //             systems: systems,
+    //             err: error
+    //         })
+    // }
+
+    // if (name.length > 2) {
+    //     systems.push(name);
+    //     res.redirect('/');
+    // }
+
 };
 
-function listSystems(req, res, next) {
+async function listSystems(req, res, next) {
     // data store fetch all
+    // let systems = await dataService.fetchData()
+    // test
+    let systems = [
+        {
+            id: 0,
+            name: 'Sol',
+            properName: 'Sun',
+            type: 'G2V',
+            distance: 0.00,
+            mass: 1.000,
+            radius: '1.00',
+            teff: 5778,
+            planets: 8
+        },
+        {
+            id: 9,
+            name: 'Gl 144',
+            properName: 'Epsilon Eridani',
+            type: 'K2V',
+            distance: 10.49,
+            mass: 0.780,
+            radius: '0.06',
+            teff: 5090,
+            planets: 1
+        },
+]
+    console.log({ 'systems0': systems[0] })
+    console.log({ 'systems1': systems[1] })
+    console.log({ 'systems': systems })
     res.render(
         'list',
         {
@@ -37,9 +83,10 @@ function listSystems(req, res, next) {
     );
 };
 
-function getSystem(req, res, next) {
+async function getSystem(req, res, next) {
 
-    let system = req.params.name;
+    let systemName = req.params.name;
+    let system = await dataService.getSystem(systemName);
 
     // data store fetch one
     res.render(
@@ -64,5 +111,14 @@ function showPage(req, res, next) {
     )
 }
 
+// receives many systems
+// function insertManySystems(req, res, next) {
+//     let systems = req.body.data;
+//     let length = systems.length;
+
+//     dataService.addBulk(systems);
+
+//     console.log(length, ' systems added');
+// }
 
 module.exports = { listSystems, getSystem, addSystem, showPage }
