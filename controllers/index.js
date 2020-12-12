@@ -42,6 +42,17 @@ async function addSystem(req, res, next) {
 
 };
 
+async function fetchDetails(req, res, next) {
+    let name = req.body.name;
+    console.log({'name ':name});
+        wapi.getFull({ input: name, output:'json'})
+        .then((response) => {
+            res.send(response)
+        }).catch((error) => {
+            res.send(error)
+        })
+}
+
 async function listSystems(req, res, next) {
     // data store fetch all
     // let systems = await dataService.fetchData()
@@ -51,22 +62,14 @@ async function listSystems(req, res, next) {
             id: 0,
             name: 'Sol',
             properName: 'Sun',
-            type: 'G2V',
             distance: 0.00,
-            mass: 1.000,
-            radius: '1.00',
-            teff: 5778,
             planets: 8
         },
         {
             id: 9,
             name: 'Gl 144',
             properName: 'Epsilon Eridani',
-            type: 'K2V',
             distance: 10.49,
-            mass: 0.780,
-            radius: '0.06',
-            teff: 5090,
             planets: 1
         },
 ]
@@ -100,13 +103,15 @@ async function getSystem(req, res, next) {
 };
 
 function showPage(req, res, next) {
+    let stats = ['10 parsecs', '270+ stars'] 
     // populate about page with data
     res.render(
         'about',
         {
             data: appName,
             title: 'About',
-            content: 'A listing of nearby star systems leveraging the Nearby Stars Catalogue.'
+            content: 'A listing of nearby star systems leveraging the Nearby Stars Catalogue.',
+            stats: stats
         }
     )
 }
@@ -121,4 +126,4 @@ function showPage(req, res, next) {
 //     console.log(length, ' systems added');
 // }
 
-module.exports = { listSystems, getSystem, addSystem, showPage }
+module.exports = { listSystems, getSystem, fetchDetails, addSystem, showPage }
