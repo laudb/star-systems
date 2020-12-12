@@ -48,13 +48,16 @@ async function addSystem(req, res, next) {
 
 async function fetchDetails(req, res, next) {
     let name = req.body.name;
-    console.log({'name ':name});
-        wapi.getFull({ input: name, output:'json'})
-        .then((response) => {
-            res.send(response)
-        }).catch((error) => {
-            res.send(error)
-        })
+    if (name !== 'undefined') {
+        console.log({'name ':name});
+            wapi.getFull({ input: name, output:'json'})
+            .then((response) => {
+                console.log({'response':response})
+                res.send(response)
+            }).catch((error) => {
+                res.send(error)
+            })
+    }
 }
 
 async function listSystems(req, res, next) {
