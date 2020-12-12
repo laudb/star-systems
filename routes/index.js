@@ -36,7 +36,7 @@ router.post('/system', api.addSystem);
  * definitions:
  *   System:
  *     name:
- *       type: object
+ *       type: text
  * /system/{name}:
  *   get:
  *     tags:
@@ -105,6 +105,8 @@ router.get('/about', api.showPage);
 // router.get('/add', (req, res) => {
 //     res.render('add', { data: 'Planetary Systems', title: 'Add' })
 // });
+
+router.post('/details', api.fetchDetails);
 
 module.exports = router;
 
