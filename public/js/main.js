@@ -16,13 +16,19 @@ $("tr").dblclick(function(e) {
     $.ajax({
         type:'POST',
         url: url,
-        data:name,
-        success: function(data) {
-            console.log('success')
-            $(".selection").innerHTML(data);
-        },
-        error: function(err) {
-            console.log({'err': err})
-        }
+        data:{name}
+    }).then((response) => {
+        console.log('success')
+        let results = response.pods;
+        let content = results.filter( result => result['title']==='Properties' );
+        console.log({'api-content': content });
+        console.log({'api-subpods': content[0]});
+        console.log({'api-sub-subpods': content[0].subpods[0]});
+        let {img, plaintext } = content[0].subpods[0];
+        console.log({img, plaintext });
+        $(".selection-text").innerHTML={plaintext};
+        $(".selection-img").attr(src, {img}.src );
+    }).catch((err)=>{
+        console.log({'err': err})
     })
 });
