@@ -5,23 +5,23 @@ block content
       div(class='hero-body')
         div(class='container')
             h1(class='title') Star List
-            table(class='table')
-              thead(class='thead') 
-                tr
-                  th ID
-                  th Name
-                  th Proper Name
-                  th Type
-                  th Distance(ly)
-                  th Mass(SU)
-                  th R (SU)
-                  th T #[sub eff] (K)
-                  th Planets
-              tbody(class='tbody')
-                each val in systems
-                  tr(class='star')
-                    each item in val
-                      td= item
+            div(class='columns')
+              div(class='column is-half')
+                table(class='table')
+                  thead(class='thead') 
+                    tr
+                      th ID
+                      th Name
+                      th Proper Name
+                      th Distance(ly)
+                      th Planets
+                  tbody(class='tbody')
+                    each val in systems
+                      tr(class='star')
+                        each item in val
+                          td= item
+              div(class='column is-half')
+                p(class='selected') Selected
 
     section(class='hero is-small')
         div(class='hero-body')
