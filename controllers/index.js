@@ -1,6 +1,10 @@
-let appName = 'Star Systems'
+const WolframAlphaAPI = require('wolfram-alpha-api');
+const config = require('../util');
+const wapi = WolframAlphaAPI(config.wolfid);
 
 const dataService = require('../services/dataService');
+
+let appName = 'Star Systems'
 
 // change to search system
 async function addSystem(req, res, next) {
