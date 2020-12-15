@@ -19,15 +19,15 @@ $("tr").dblclick(function(e) {
         data:{name}
     }).then((response) => {
         console.log('success')
-        let results = response.pods;
-        let content = results.filter( result => result['title']==='Properties' );
+        // let results = response.pods;
+        // let content = results.filter( result => result['title']==='Properties' );
         // console.log({'api-content': content });
         // console.log({'api-subpods': content[0]});
         // console.log({'api-sub-subpods': content[0].subpods[0]});
-        let {img, plaintext } = content[0].subpods[0];
+        // let {img, plaintext } = content[0].subpods[0];
         // console.log({img, plaintext });
-        $(".selection-text").innerHTML={plaintext};
-        $(".selection-img").attr('src', {img}.src );
+        // $("#selection-text").innerHTML={plaintext};
+        // $("#selection-img").attr('src', {img}.src );
     }).catch((err)=>{
         console.log({'err': err})
     })

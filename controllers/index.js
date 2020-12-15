@@ -52,8 +52,17 @@ async function fetchDetails(req, res, next) {
         console.log({'name ':name});
             wapi.getFull({ input: name, output:'json'})
             .then((response) => {
+
                 console.log({'response':response})
-                res.send(response)
+                let results = response.pods;
+                let content = results.filter( result=> result['title'] === 'Properties' );
+                let {img, plaintext} = content[0].pods[0];
+                
+                res.render('list',
+                {
+                  img: {img}.src,
+                  plainText: {plaintext}
+                })
             }).catch((error) => {
                 res.send(error)
             })
