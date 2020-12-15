@@ -1,7 +1,7 @@
 extend layout
 
 block content 
-    section(class='hero is-medium')
+    section(class='hero is-small')
       div(class='hero-body')
         div(class='container')
             h1(class='title') Star List
@@ -21,9 +21,7 @@ block content
                         each item in val
                           td= item
               div(class='column is-half')
-                div(class='selection') Loading...
-                  img(class='selection-img')
-                  p(class='selection-text')
+                +wolfram-widget()
 
     section(class='hero is-small')
         div(class='hero-body')
