@@ -2,7 +2,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const db = require('../models/db');
+const config = require('../util');
+const currentEnv = config.currentEnv;
     
 // loaders
 module.exports = function (app, express) {
@@ -10,7 +11,7 @@ module.exports = function (app, express) {
     // view engine setup
     app.set('views', path.join(__dirname, '../views'));
     app.set('view engine', 'pug');
-
+    
     // static folder setup
     app.use(express.urlencoded({ extended: false }));
     app.use(express.static(path.join(__dirname, '../public')));

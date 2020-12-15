@@ -6,6 +6,23 @@ const dataService = require('../services/dataService');
 
 let appName = 'Star Systems'
 
+let systems = [
+    {
+        id: 0,
+        name: 'Sol',
+        properName: 'Sun',
+        distance: 0.00,
+        planets: 8
+    },
+    {
+        id: 9,
+        name: 'Gl 144',
+        properName: 'Epsilon Eridani',
+        distance: 10.49,
+        planets: 1
+    },
+]
+
 // change to search system
 async function addSystem(req, res, next) {
 
@@ -50,16 +67,19 @@ async function fetchDetails(req, res, next) {
     let name = req.body.name;
     if (name !== 'undefined') {
         console.log({'name ':name});
-            wapi.getFull({ input: name, output:'json'})
+            await wapi.getFull({ input: name, output:'json'})
             .then((response) => {
 
-                console.log({'response':response})
                 let results = response.pods;
                 let content = results.filter( result=> result['title'] === 'Properties' );
-                let {img, plaintext} = content[0].pods[0];
+                console.log({'response':content[0].subpods})
+                let {img, plaintext} = content[0].subpods[0];
+                console.log('--------------')
+                console.log({img, plaintext})
                 
                 res.render('list',
                 {
+                  systems,
                   img: {img}.src,
                   plainText: {plaintext}
                 })
@@ -73,22 +93,7 @@ async function listSystems(req, res, next) {
     // data store fetch all
     // let systems = await dataService.fetchData()
     // test
-    let systems = [
-        {
-            id: 0,
-            name: 'Sol',
-            properName: 'Sun',
-            distance: 0.00,
-            planets: 8
-        },
-        {
-            id: 9,
-            name: 'Gl 144',
-            properName: 'Epsilon Eridani',
-            distance: 10.49,
-            planets: 1
-        },
-]
+ 
     console.log({ 'systems0': systems[0] })
     console.log({ 'systems1': systems[1] })
     console.log({ 'systems': systems })
