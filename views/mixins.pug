@@ -12,3 +12,11 @@ mixin system-form
         button(class="modal-close is-large" aria-label='close')
 
 
+mixin wolfram-widget(src, content)
+    div(class="card" id="wolframWidget")
+        div(class="card-image")
+            figure(class="image is-4by3")
+                img( src=src alt="wolfram result")
+        div(class="card-content")
+            div(class="content")
+                p= content    
