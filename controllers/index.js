@@ -80,7 +80,7 @@ async function fetchDetails(req, res, next) {
                 
                 console.log({ img, plaintext})
                 
-                res.render('list',
+                res.render('detail',
                 {
                   systems:'',
                   img,
