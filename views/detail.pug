@@ -1,8 +1,9 @@
 div(class="card" id="wolframWidget")
+    p= img
+    p= plaintext
     div(class="card-image")
         figure(class="image is-4by3")
-            p= src
-            img( src='#{src}' alt="wolfram result")
+            img( src='' id="wolfram-image" alt="wolfram result")
     div(class="card-content")
         div(class="content")
-            p #{content}    
+            p(id="content-text")  

@@ -1,4 +1,4 @@
-extend layout
+extends layout
 
 block content 
     section(class='hero is-small')
@@ -21,7 +21,7 @@ block content
                         each item in val
                           td= item
               div(class='column is-half')
-                include detail
+                include ./detail
                 //- +wolfram-widget(img, plaintext)
 
     section(class='hero is-small')
