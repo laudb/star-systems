@@ -73,15 +73,18 @@ async function fetchDetails(req, res, next) {
                 let results = response.pods;
                 let content = results.filter( result=> result['title'] === 'Properties' );
                 console.log({'response':content[0].subpods})
-                let {img, plaintext} = content[0].subpods[0];
+                let img = content[0].subpods[0]['img'];
+                    img = img['src'];
+                let plaintext = content[0].subpods[0]['plaintext'];
                 console.log('--------------')
-                console.log({img, plaintext})
+                
+                console.log({ img, plaintext})
                 
                 res.render('list',
                 {
-                  systems,
-                  img: {img}.src,
-                  plainText: {plaintext}
+                  systems:'',
+                  img,
+                  plaintext
                 })
             }).catch((error) => {
                 res.send(error)
