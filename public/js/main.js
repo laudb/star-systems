@@ -18,10 +18,8 @@ $(document).ready(function () {
             url: url,
             data:{name}
         }).then((response) => {
-            console.log('success')
             console.log({'response>>>>': response})
             $("#wolfram-image").attr("src", response.img);
-            // $("#content-source").html(response.datasources);
         }).catch((err)=>{
             console.log({'err': err})
         })

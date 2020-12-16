@@ -78,8 +78,6 @@ async function fetchDetails(req, res, next) {
                 let plaintext = content[0].subpods[0]['plaintext'];
                 console.log('--------------')
                 
-                console.log({ img, plaintext})
-                
                 res.send(
                 {
                   img,
