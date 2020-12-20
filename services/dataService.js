@@ -17,11 +17,11 @@ async function getSystem(name) {
     // fetch system via name and return details
     return name;
 }
-async function addBulk(data) {
 
+async function defaultLoad(){
+  return await systems;
 }
 
+async function addBulk(data) {}
 
-
-
-module.exports = { createData, fetchData, addBulk, getSystem }
+module.exports = { createData, fetchData, addBulk, getSystem, defaultLoad }

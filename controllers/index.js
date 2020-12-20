@@ -6,23 +6,6 @@ const dataService = require('../services/dataService');
 
 let appName = 'Star Systems'
 
-let systems = [
-    {
-        id: 0,
-        name: 'Sol',
-        properName: 'Sun',
-        distance: 0.00,
-        planets: 8
-    },
-    {
-        id: 9,
-        name: 'Gl 144',
-        properName: 'Epsilon Eridani',
-        distance: 10.49,
-        planets: 1
-    },
-]
-
 // change to search system
 async function addSystem(req, res, next) {
 
@@ -72,11 +55,9 @@ async function fetchDetails(req, res, next) {
 
                 let results = response.pods;
                 let content = results.filter( result=> result['title'] === 'Properties' );
-                console.log({'response':content[0].subpods})
                 let img = content[0].subpods[0]['img'];
                     img = img['src'];
                 let plaintext = content[0].subpods[0]['plaintext'];
-                console.log('--------------')
                 
                 res.send(
                 {
