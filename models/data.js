@@ -17,4 +17,16 @@ let dataSchema = new Schema({
 
 let Data = mongoose.model('Data', dataSchema);
 
+Data.prototype.seedData = function(systems) {
+
+  return Data.insertMany(systems)
+  .then(function( response) {
+    console.log(`${response} -- ${systems.length} Systems Inserted`)
+  })
+  .catch(function(error){
+    console.log(`Error detected `, error)
+  })
+  
+}
+
 module.exports = Data;

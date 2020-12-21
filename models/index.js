@@ -1,17 +1,12 @@
 import systems from './sample.js';
+import Data from './data.js'
 
 console.log('loading default data');
 
-function seedData() {
+let anyData = Data.find({});
 
-  return Data.insertMany(systems)
-  .then(function( response) {
-    console.log(`${response} -- ${systems.length} Systems Inserted`)
-  })
-  .catch(function(error){
-    console.log(`Error detected `, error)
-  })
-  
+if (anyData.length === 0) {
+  Data.seedData(systems);
 }
 
 export default seedData;
