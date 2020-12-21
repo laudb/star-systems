@@ -16,8 +16,8 @@ db.on('error', (error) => {
 
 db.once('open', () => {
     console.log('Successfully Connected to the Database');
+    
 });
-
 
 module.exports = db;
 

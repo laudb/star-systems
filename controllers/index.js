@@ -72,11 +72,9 @@ async function fetchDetails(req, res, next) {
 
 async function listSystems(req, res, next) {
     // data store fetch all
-    // let systems = await dataService.fetchData()
+    let systems = await dataService.fetchData()
+    
     // test
- 
-    console.log({ 'systems0': systems[0] })
-    console.log({ 'systems1': systems[1] })
     console.log({ 'systems': systems })
     res.render(
         'list',

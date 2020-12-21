@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 let Schema = mongoose.Schema;
 
 let dataSchema = new Schema({
@@ -19,14 +20,26 @@ let Data = mongoose.model('Data', dataSchema);
 
 Data.prototype.seedData = function(systems) {
 
-  return Data.insertMany(systems)
-  .then(function( response) {
-    console.log(`${response} -- ${systems.length} Systems Inserted`)
-  })
-  .catch(function(error){
-    console.log(`Error detected `, error)
-  })
-  
+  Data.find({})
+    .then(
+      (response) => {
+        console.log(response)
+        if (response.length > 0) {
+          console.log('Seed data already inserted')
+          return;
+        }
+        return Data.insertMany(systems)  
+    })
+    .then((result)=>{
+
+      console.log(`${result} -- ${systems.length} Systems Inserted`);
+      return;
+
+    })
+    .catch(
+    (error) => {
+      console.log({'error': error})
+    })  
 }
 
 module.exports = Data;
