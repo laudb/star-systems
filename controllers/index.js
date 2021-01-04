@@ -6,25 +6,6 @@ const dataService = require('../services/dataService');
 
 let appName = 'Star Systems'
 
-// change to search system
-// async function addSystem(req, res, next) {
-
-//   let data = {
-//     id: 0,
-//     name: 'Sol',
-//     properName: 'Sun',
-//     type: 'G2V',
-//     distance: 0.00,
-//     mass: 1.000,
-//     radius: '1.00',
-//     teff: 5778,
-//   }
-
-//   let result = await dataService.createData(data);
-//   console.log({ '--result--': result });
-
-// };
-
 async function fetchDetails(req, res, next) {
   let name = req.body.name;
   if (name !== 'undefined') {

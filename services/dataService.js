@@ -23,6 +23,4 @@ async function defaultLoad() {
   return await systems;
 }
 
-async function addBulk(data) { }
-
-module.exports = { createData, fetchData, addBulk, getSystem, defaultLoad }
+module.exports = { createData, fetchData, getSystem, defaultLoad }
