@@ -2,34 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const api = require('../controllers');
-// api.addSystem();
-/**
- * @swagger
- * definitions:
- *   System:
- *     name:
- *       type: string
- * /system:
- *  post:
- *     tags:
- *       - Systems
- *     description: Adds a new system
- *     parameters:
- *       - in: body
- *         name: system-name
- *         schema:
- *           $ref: '#/definitions/System'
- *     produces:
- *       - application/json
- *     responses:
- *       201:
- *         description: System created
- *         schema:
- *           $ref: '#/definitions/System'
- *
-*/
-router.post('/system', api.addSystem);
-
 
 /**
  * @swagger
@@ -66,6 +38,7 @@ router.get('/system/:name', api.getSystem);
  *         type: array
  * /:
  *   get:
+ *     depracated: true
  *     tags:
  *       - Systems
  *     description: Returns all Systems by names
