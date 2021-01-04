@@ -1,4 +1,4 @@
-import { sample } from '../models/';
+const sample = require('../models/sample');
 
 async function fetchData() {
   let data = sample;
