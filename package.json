@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest tests"
   },
   "author": "Laud B <laud.bentil@gmail.com>",
   "license": "ISC",
@@ -30,6 +30,7 @@
     "wolfram-alpha-api": "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz"
   },
   "devDependencies": {
+    "jest": "^26.6.3",
     "nodemon": "^2.0.4"
   }
 }
