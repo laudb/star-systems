@@ -64,7 +64,7 @@ async function getSystem(req, res, next) {
 
 function showPage(req, res, next) {
   let stats = ['10 parsecs', '270+ stars']
-  // populate about page with data
+  // populate about page with data - tbc
   res.render(
     'about',
     {

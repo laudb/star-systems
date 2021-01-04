@@ -1,15 +1,9 @@
-const DataModel = require('../models/data');
-
-function createData(data) {
-  newData = new DataModel(data);
-  newData.save();
-  return newData;
-}
+import { sample } from '../models/';
 
 async function fetchData() {
-  let data = await DataModel.collection.find();
-  console.log({ 'data': data.datas })
-  return data.datas
+  let data = sample;
+  console.log({ 'data': data });
+  return data;
 }
 
 async function getSystem(name) {
@@ -19,8 +13,4 @@ async function getSystem(name) {
   return name;
 }
 
-async function defaultLoad() {
-  return await systems;
-}
-
-module.exports = { createData, fetchData, getSystem, defaultLoad }
+module.exports = { fetchData, getSystem }
