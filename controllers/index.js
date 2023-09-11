@@ -1,6 +1,6 @@
-const WolframAlphaAPI = require('wolfram-alpha-api');
+// const WolframAlphaAPI = require('wolfram-alpha-api');
 const config = require('../util');
-const wapi = WolframAlphaAPI(config.wolfid);
+// const wapi = WolframAlphaAPI(config.wolfid);
 
 const dataService = require('../services/dataService');
 
@@ -10,23 +10,23 @@ async function fetchDetails(req, res, next) {
   let name = req.body.name;
   if (name !== 'undefined') {
     console.log({ 'name ': name });
-    await wapi.getFull({ input: name, output: 'json' })
-      .then((response) => {
+    // await wapi.getFull({ input: name, output: 'json' })
+    //   .then((response) => {
 
-        let results = response.pods;
-        let content = results.filter(result => result['title'] === 'Properties');
-        let img = content[0].subpods[0]['img'];
-        img = img['src'];
-        let plaintext = content[0].subpods[0]['plaintext'];
+    //     let results = response.pods;
+    //     let content = results.filter(result => result['title'] === 'Properties');
+    //     let img = content[0].subpods[0]['img'];
+    //     img = img['src'];
+    //     let plaintext = content[0].subpods[0]['plaintext'];
 
-        res.send(
-          {
-            img,
-            plaintext
-          })
-      }).catch((error) => {
-        res.send(error)
-      })
+    //     res.send(
+    //       {
+    //         img,
+    //         plaintext
+    //       })
+    //   }).catch((error) => {
+    //     res.send(error)
+    //   })
   }
 }
 
