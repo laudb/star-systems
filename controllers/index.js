@@ -33,9 +33,6 @@ async function fetchDetails(req, res, next) {
 async function listSystems(req, res, next) {
   // data store fetch all
   let systems = await dataService.fetchData()
-
-  // test
-  console.log({ 'systems': systems })
   res.render(
     'list',
     {

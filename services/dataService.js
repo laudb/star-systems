@@ -1,16 +1,15 @@
-const sample = require('../models/sample');
+const db = require('../models/');
 
-async function fetchData() {
-  let data = sample;
-  console.log({ 'data': data });
-  return data;
-}
+function fetchAllData() {
+  return db.fetchAllQuery()
+} 
 
 async function getSystem(name) {
   if (name === 'undefined')
     return '-'
   // fetch system via name and return details
-  return name;
+  let all_data = db.fetchAllQuery;
+  return all_data[0];
 }
 
-module.exports = { fetchData, getSystem }
+module.exports = { fetchAllData, getSystem }
