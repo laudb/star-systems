@@ -5,8 +5,8 @@ A node.js web application that provides general information on the nearest stars
 Visit the app [here](https://star-systems.azurewebsites.net/)
 
 Sources of data are from:
-1) Nearest stars catalogue (science data)
-2) Wikidata (general knowledge)
+1) Nearest stars catalogue 
+2) Wikidata
 
 ## Running the app
 
