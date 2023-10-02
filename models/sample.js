@@ -1,3 +1,5 @@
+// populates database with data
+
 let systems = [
   {
     id: 0,
